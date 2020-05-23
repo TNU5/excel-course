@@ -28,7 +28,7 @@ module.exports = {
   mode: 'development',
   entry: ['@babel/polyfill', './index.js'],
   output: {
-    filename: 'bundle.[hash].js',
+    filename: filename('js'),
     path: path.resolve(__dirname, 'dist'),
   },
   resolve: {
@@ -37,7 +37,6 @@ module.exports = {
       '@': path.resolve(__dirname, 'src'),
       '@core': path.resolve(__dirname, 'src/core'),
     },
-
   },
   devtool: isDev ? 'source-map' : false,
   devServer: {
@@ -83,10 +82,10 @@ module.exports = {
         test: /\.js$/,
         exclude: /node_modules/,
         use: jsLoaders(),
-        loader: 'babel-loader',
-        options: {
-          presets: ['@babel/preset-env'],
-        },
+        // loader: 'babel-loader',
+        // options: {
+        //   presets: ['@babel/preset-env'],
+        // },
       },
     ],
   },
